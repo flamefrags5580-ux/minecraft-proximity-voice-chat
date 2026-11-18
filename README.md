@@ -2,12 +2,14 @@
 
 A Bedrock server addon and companion web client for proximity voice chat.
 
-## Web UI
+## Website
 
-The initial web client is in `website/`. It includes a disconnected/link-code screen and microphone mute/unmute controls. The microphone control requests browser permission and toggles the local audio track; it does not transmit voice by itself. Live voice, account linking, and persistent auto-connect require a deployed relay/WebRTC backend, which is not included yet.
+The web client is in `website/`. It currently includes disconnected/link-code UI and local microphone mute/unmute controls. Microphone access requires HTTPS (or localhost). The UI is not yet a complete live voice client: it must connect to the relay and create WebRTC peer connections to transmit audio.
 
-To preview the page, serve the `website/` directory with any static web server. Microphone access requires HTTPS (or localhost). To configure the connection request, edit `website/config.js` and set `apiBaseUrl` to the public HTTPS relay URL. The client expects `POST /api/connect` with JSON `{ "code": "ABC123" }`, and a successful JSON response such as `{ "connected": true, "playerName": "Player" }`.
+## Relay
 
-## Addon
+A first-pass Railway-compatible HTTP/WebSocket signaling service is in `relay/`. See [`relay/README.md`](relay/README.md) for setup. It supports addon position snapshots, link-code validation, in-range peer discovery, and forwarding WebRTC offer/answer/ICE messages. It keeps state in memory and needs a persistent/shared store before using multiple replicas.
 
-The downloadable Bedrock addon package and relay server are not implemented yet. See the repository for updates.
+## Bedrock addon
+
+The addon package is not yet implemented. It must send player snapshots to the relay with a server-only `ADDON_TOKEN` and support `/voicechat connect <code>` to provide codes that the relay can verify. The `.mcpack` download will be added after the addon and configuration are complete.
