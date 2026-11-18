@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="Connect to proximity voice chat for Minecraft Bedrock.">
+  <title>Proximity VC</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Proximity VC home">
+        <span class="brand-mark" aria-hidden="true">◉</span>
+        <span>PROXIMITY<span class="brand-light">VC</span></span>
+      </a>
+      <a class="addon-link" href="https://github.com/flamefrags5580-ux/minecraft-proximity-voice-chat" target="_blank" rel="noreferrer">Addon & setup <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> MINECRAFT BEDROCK VOICE</div>
+      <h1 id="page-title">Stay close.<br><span>Stay in the conversation.</span></h1>
+      <p class="hero-copy">Link your Minecraft account to join proximity voice chat with your server.</p>
+    </section>
+
+    <section class="voice-card" aria-label="Voice chat controls">
+      <div class="card-head">
+        <div>
+          <div class="section-label">YOUR CONNECTION</div>
+          <h2 id="connection-title">Not connected</h2>
+        </div>
+        <div id="connection-badge" class="status-badge is-off" role="status">
+          <span class="status-dot"></span><span id="connection-label">OFFLINE</span>
+        </div>
+      </div>
+
+      <div class="connection-panel" id="connection-panel">
+        <div class="panel-icon" aria-hidden="true">⌁</div>
+        <div class="panel-content">
+          <h3>Connect with your code</h3>
+          <p>In Minecraft, run <code>/voicechat connect &lt;code&gt;</code> to get a linking code.</p>
+          <form id="connect-form" autocomplete="off">
+            <label class="sr-only" for="link-code">Six-character link code</label>
+            <input id="link-code" name="code" type="text" inputmode="text" maxlength="6" minlength="6" placeholder="ENTER CODE" aria-describedby="connect-help" spellcheck="false" required>
+            <button id="connect-button" class="button button-primary" type="submit">Connect <span aria-hidden="true">→</span></button>
+          </form>
+          <p id="connect-help" class="help-text">Codes are six characters and are only used to link your account.</p>
+          <p id="connect-message" class="message" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="divider"><span></span><i>MICROPHONE</i><span></span></div>
+
+      <div class="mic-row">
+        <div class="mic-icon" id="mic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="12" rx="3"></rect><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5M8.5 21.5h7"></path></svg></div>
+        <div class="mic-copy">
+          <h3 id="mic-title">Microphone muted</h3>
+          <p id="mic-description">Your microphone is off.</p>
+        </div>
+        <button id="mic-button" class="button button-muted" type="button" aria-pressed="true">Unmute</button>
+      </div>
+      <p id="mic-message" class="mic-message" role="status" aria-live="polite">Allow microphone access when your browser asks.</p>
+    </section>
+
+    <aside class="notice"><span class="notice-icon" aria-hidden="true">i</span><p><strong>Setup note</strong> — The web controls are ready, but live voice requires a configured relay/WebRTC server. Microphone mute here is a local control until the voice relay is connected.</p></aside>
+
+    <footer><span>Made for Minecraft Bedrock servers</span><a href="https://github.com/flamefrags5580-ux/minecraft-proximity-voice-chat" target="_blank" rel="noreferrer">View project on GitHub ↗</a></footer>
+  </main>
+</body>
+</html>
